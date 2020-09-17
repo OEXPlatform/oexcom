@@ -12,7 +12,7 @@
           <a href="#"  class="borser">{{$t('home.toOEXCHAIN')}}</a>
           <a class="download" href="#">
             <img src="../src/assets/img/appdownload.png" v-if="Language=='zh'"/>
-			<img src="../src/assets/img/appdownloaden.png" v-else style="width:153px;"/>
+			<img src="../src/assets/img/appdownloaden.png" v-else style="width:131px;"/>
             <!-- APP下载 -->
           </a>
           <div class="lanuage">
@@ -116,8 +116,10 @@
       <div class="part_three_center">
         <div class="center_left">
           <div class="text_oex">OEX</div>
-          <div class="text_text" >{{$t('text_text')}}</div>
-          <div class="" :class="{'text_text_account':Language=='zh'}" class="text_text_accounten ">{{$t('text_text_account')}}</div>
+          <div   class="text_text" v-if="Language=='zh'">{{$t('text_text')}}</div>
+		  <div  class="text_texten" v-else>{{$t('text_text')}}</div>
+          <div  class="text_text_account" v-if="Language=='zh'">{{$t('text_text_account')}}</div>
+		  <div   class="text_text_accounten " v-else>({{$t('text_text_account')}})</div>
         </div>
         <img src="../src/assets/img/part_three_right.png" class="center_right" v-if="Language=='zh'"/>
         <img src="../src/assets/img/part_three_righten.png" class="center_right" v-else/>

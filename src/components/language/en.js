@@ -34,6 +34,6 @@ module.exports = {
 		six: "All user assets and contract data can be snapshotted based on time by using on-chain snapshot technology, which will improve the  scalability of DEFI application scenarios, and the block building composability."
 	}],
 	text_partner:"ECOLOGY PARTNERS APPLICATION",
-	text_text:"ToKen Allocation",
-	text_text_account:"Mechanism",
+	text_text:"Token Allocation Mechanism",
+	text_text_account:"1 billion total supply",
 }
