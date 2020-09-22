@@ -11,7 +11,7 @@
          <a href="img/OEXEN1.0.pdf" target="_blank" class="whitebook" v-else>{{$t('home.toWHITEPAPER')}}</a>
           <a href="#"  class="whitebook">{{$t('home.toOEXCHAIN')}}</a>
 		   <a href="https://uniswap.oexchain.io/#/swap"  class="whitebook" target="_blank">{{$t('OEXSWAP')}}</a>
-		   <a href="https://oexservice.zendesk.com"  class="whitebook"  target="_blank">{{$t('Announcement')}}</a>
+		   <a href="https://oexservice.zendesk.com/hc/zh-hk"  class="whitebook"  target="_blank">{{$t('Announcement')}}</a>
           <a class="download" href="#">
             <img src="../src/assets/img/appdownload.png" v-if="Language=='zh'"/>
 			<img src="../src/assets/img/appdownloaden.png" v-else style="width:131px;"/>
