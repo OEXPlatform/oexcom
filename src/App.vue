@@ -6,10 +6,12 @@
       <div class="center">
         <img src="../src/assets/img/logo.png">
         <div class="right">
-          <a href="#" class="home active">{{$t('home.toHOME')}}</a>
+          <a href="#" class="whitebook active"  >{{$t('home.toHOME')}}</a>
           <a href="img/OEX1.0.pdf" target="_blank" class="whitebook" v-if="Language=='zh'">{{$t('home.toWHITEPAPER')}}</a>
          <a href="img/OEXEN1.0.pdf" target="_blank" class="whitebook" v-else>{{$t('home.toWHITEPAPER')}}</a>
-          <a href="#"  class="borser">{{$t('home.toOEXCHAIN')}}</a>
+          <a href="#"  class="whitebook">{{$t('home.toOEXCHAIN')}}</a>
+		   <a href="https://uniswap.oexchain.io/#/swap"  class="whitebook" target="_blank">{{$t('OEXSWAP')}}</a>
+		   <a href="https://oexservice.zendesk.com"  class="whitebook"  target="_blank">{{$t('Announcement')}}</a>
           <a class="download" href="#">
             <img src="../src/assets/img/appdownload.png" v-if="Language=='zh'"/>
 			<img src="../src/assets/img/appdownloaden.png" v-else style="width:131px;"/>

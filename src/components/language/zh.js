@@ -35,6 +35,8 @@ module.exports = {
 	}],
 	text_partner:"生态合作伙伴申请中",
 	text_text:"代币分配机制",
-	text_text_account:"总量限制10亿枚"
+	text_text_account:"总量限制10亿枚",
+	OEXSWAP:"OEX兑换池",
+	Announcement:"公告中心"
 	
 }

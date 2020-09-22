@@ -85,6 +85,7 @@ html,body{
 }
 .active{
   color: #23C9A7;
+ margin-right: 20upx;
 }
 .download{
   color: #1F2340;
@@ -104,13 +105,14 @@ html,body{
 	height: 19.99px;
 }
 .right .whitebook{
-  margin: 0 30px;
+  margin-right: 20px;
 }
 .borser{
   margin-right: 100px;
 }
 .home,.whitebook,.borser,.download{
   text-decoration: none;
+
 }
 .banner{
  width: 1080px;
