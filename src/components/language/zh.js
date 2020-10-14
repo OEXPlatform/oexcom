@@ -37,6 +37,7 @@ module.exports = {
 	text_text:"代币分配机制",
 	text_text_account:"总量限制10亿枚",
 	OEXSWAP:"OEX兑换池",
-	Announcement:"公告中心"
-	
+	Announcement:"公告中心",
+	ios:"iOS客户端下载",
+	andr:"Android客户端下载"
 }

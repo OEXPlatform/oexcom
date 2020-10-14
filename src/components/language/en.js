@@ -37,5 +37,7 @@ module.exports = {
 	text_text:"Token Allocation Mechanism",
 	text_text_account:"1 billion total supply",
 	OEXSWAP:"OEXSWAP",
-	Announcement:"BULLETIN"
+	Announcement:"BULLETIN",
+	ios:"Download for iPhone",
+	andr:"Download for Android"
 }
