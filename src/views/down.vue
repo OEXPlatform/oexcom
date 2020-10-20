@@ -1,8 +1,8 @@
 <template>
-	<div class="down" style="font-family: PingFang SC;">
-
-			<div class="downheader">
-				<div class="downcenter">
+	<div class="down" style="font-family: PingFang SC;width: 100%;">
+		<div class="bightml" v-if="sm==true">
+			<div class="downheader" >
+				<div class="downcenter" >
 					<img src="../../src/assets/img/logo.png" class="logo">
 					<div class="right">
 						<router-link to="/" class="whitebook active">{{$t('home.toHOME')}}</router-link>
@@ -30,6 +30,7 @@
 					<div class="img3"></div>
 					<div class="img4"></div>
 					<div class="img5">
+						<a href="" target="_blank">
 						<div style="height:auto;position: relative;" @mouseover="mouseOver" @mouseleave="mouseLeave">
 							<div style=" display: inline;">
 								<img src="../assets/img/down5.png" style="margin-top:10px" />
@@ -40,6 +41,7 @@
 							<!-- <div class="ewm" :style="active">
 							</div> -->
 						</div>
+						</a>
 					</div>
 					<div class="img6">
 						<div style="height:auto;position: relative;" @mouseover="mouseOver2" @mouseleave="mouseLeave2">
@@ -57,7 +59,7 @@
 			</div>
 
 
-			<div class="footer">
+			<div class="footer" style="width: 104%;min-width: 1500px;">
 				<div class="footer_center">
 					<div class="center_left footer_left">
 						<img src="../../src/assets/img/footer_left.png" />
@@ -73,11 +75,35 @@
 				</div>
 			</div>
 
-			<div class="coypRight">
+			<div class="coypRight"  style="width: 104%;min-width: 1500px">
 				<span>© 2019 Theme designed by oex.com</span>
+				<span class="line">|</span>
+				<span>冀ICP备2020025490号</span>
 				<span class="line">|</span>
 				<span>oexfund@gmail.com</span>
 			</div>
+		</div>
+		<div class="smhtml"  v-else>
+			<div class="sm">
+				<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
+				<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
+				
+				<img src="../assets/img/iphone5.png" class="iphone5"    v-if="Language=='zh'">
+				<img src="../assets/img/iphone5en.png" class="iphone5"  v-else >
+				<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
+				<img src="../assets/img/iphone6en.png" class="iphone6" @click="down11" v-else>
+				<img src="../assets/img/iphone2.png" class="iphone2" >
+				<!-- <a href="https://www.btctool.cn/app-download/oexwallet.apk" class="iphone6"></a> -->
+				
+				
+				<div class="mcstyle" :style="mc">
+					<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
+					<img src="../assets/img/iphone3.png" class="iphone3" v-else>
+					<img src="../assets/img/iphone4en.png" class="iphone4" v-if="Language=='zh'">
+					<img src="../assets/img/iphone4.png" class="iphone4" v-else>
+				</div>
+			</div>
+		</div>
 		</div>
 </template>
 
@@ -89,20 +115,37 @@
 				mc:"",
 				Language: "zh",
 				clientHeight: '',
-				active2:"display:none"
+				active2:"display:none",
+				active:"display:none",
+				sm:true,
+				mc:"",
 			}
 		},
 		created() {
+			var _this=this
 			var b=window.navigator.userAgent.toLowerCase()
-			console.log(b)
-			// if(b=='micromessenger'){
-			// if(b=='mozilla/5.0'){
-				if (b.indexOf('micromessenger') > -1) {
+			var bIsAndroid = b.match(/android/i) == "android"
+			// var iphone=b.match(/iPhone/i) == "iPhone"
+			// var iPad=b.match(/iPad/i) == "iPad"
+		
+			var bIsIpad = b.match(/ipad/i) == "ipad";
+			 var bIsIphoneOs = b.match(/iphone os/i) == "iphone os";
+			
+			
+			if (b.indexOf('micromessenger') > -1) {
 				console.log(11)
 				this.mc="display:block"
 			}else{
 				this.mc="display:none"
 			}
+			if (bIsAndroid ||bIsIphoneOs||bIsIpad) {
+			        _this.sm=false
+					
+			                 }
+			            else {
+			 console.log(2222)
+			 
+						}
 		},
 		components: {},
 		mouted() {},
@@ -110,6 +153,9 @@
 			down11(){
 				 window.open("https://www.btctool.cn/app-download/oexwallet.apk");
 			},
+			// down22(){
+			// 	 window.open("https://www.btctool.cn/app-download/");
+			// },
 			changeLanguage() {
 				this.$i18n.locale == 'en' ? this.$i18n.locale = 'zh' : this.$i18n.locale = 'en',
 					console.log(this.$i18n.locale)
@@ -142,4 +188,5 @@
 
 <style scoped>
 	@import url('../../src/assets/styles/down.css');
+	@import url('../../src/assets/styles/downapp.css');
 </style>

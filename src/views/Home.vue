@@ -160,6 +160,8 @@
 		<div class="coypRight">
 			<span>© 2019 Theme designed by oex.com</span>
 			<span class="line">|</span>
+			<span>冀ICP备2020025490号</span>
+			<span class="line">|</span>
 			<span>oexfund@gmail.com</span>
 		</div>
 </div>
@@ -173,6 +175,9 @@
 			}
 		},
 		methods: {
+			down11(){
+				 window.open("https://www.btctool.cn/app-download/oexwallet.apk");
+			},
 			changeLanguage() {
 				this.$i18n.locale == 'en' ? this.$i18n.locale = 'zh' : this.$i18n.locale = 'en',
 					console.log(this.$i18n.locale)

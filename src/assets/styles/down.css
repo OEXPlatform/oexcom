@@ -5,6 +5,7 @@
 		.dowm{
 		  width: 100%;
 		  height: auto;
+		  background: ;
 		  min-width: 1080px;
 		  min-height: 100%;
 		  display: flex;
@@ -12,6 +13,7 @@
 		  justify-content: flex-start;
 		  align-items: center;
 		  overflow-x: hidden;
+		  background: #F4F6FA;
 		}
 		*{
 		  margin: 0;
@@ -97,10 +99,11 @@
 			}
 			
 			.down .part_two1 {
-				width: 100%;
+				width: 1500px;
 				height: 800px;
 				margin-top: 8px;
-				background: #F4F6FA;
+				margin: 0 auto;
+				
 			}
 			
 			.down .part_tow_center1 {
@@ -148,7 +151,8 @@
 			}
 			
 			.down .downheader {
-				width: 100%;
+				width: 104%;
+				min-width: 1500px;
 				height: 60px;
 				background: #FFFFFF;
 				box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -167,6 +171,7 @@
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
+				margin: 0 auto;
 			}
 			
 			.down .downcenter .logo {
