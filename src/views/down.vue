@@ -37,8 +37,8 @@
 								<div style=" display: inline;">
 									<span class="span1">{{$t('ios')}}</span>
 								</div>
-								<!-- <div class="ewm" :style="active">
-								</div> -->
+								<div class="ewm" :style="active">
+								</div>
 							</div>
 					</div>
 					<div class="img6">
@@ -86,11 +86,11 @@
 				<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
 				<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
 
-				<img src="../assets/img/iphone5.png" class="iphone5"    v-if="Language=='zh'">
+				<!-- <img src="../assets/img/iphone5.png" class="iphone5"    v-if="Language=='zh'">
 				<img src="../assets/img/iphone5en.png" class="iphone5"  v-else >
 				<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
-				<img src="../assets/img/iphone6en.png" class="iphone6" @click="down11" v-else> 
-				<!-- <div class="downbutton">
+				<img src="../assets/img/iphone6en.png" class="iphone6" @click="down11" v-else> -->
+				<div class="downbutton">
 					<div class="ios" v-if="Language=='zh'" @click="downios">
 						<img src="../assets/img/down5.png" class="downixon">
 						<div class="downText">ios下载</div>
@@ -108,7 +108,7 @@
 						<img src="../assets/img/down6.png" class="downixon">
 						<div class="downText" style="margin-left:15px">android</div>
 					</div>
-				</div> -->
+				</div>
 				<img src="../assets/img/iphone2.png" class="iphone2">
 				<!-- <a href="https://www.btctool.cn/app-download/oexwallet.apk" class="iphone6"></a> -->
 
@@ -125,7 +125,9 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
+		
 		name: "wbsm",
 		data() {
 			return {
@@ -139,6 +141,21 @@
 			}
 		},
 		created() {
+			// console.log(window.location.href)
+			var href=window.location.href
+			// console.log(href.split("=")[1])
+			if(href.split("=")[1]){
+			var geticodebyip=href.split("=")[1]
+			 axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
+			    }).then(function(res){
+			        console.log(res)
+			    }).catch(function (error) {
+			        console.log(error);
+			    });
+					console.log("有参数")
+				}else{
+					console.log("无参数")
+				}
 			var _this = this
 			var b = window.navigator.userAgent.toLowerCase()
 			var bIsAndroid = b.match(/android/i) == "android"
@@ -170,7 +187,7 @@
 				window.open("https://www.btctool.cn/app-download/oexwallet.apk");
 			},
 			downios() {
-				window.open("http://d.ayxfjc.com/oex");
+				window.open("https://testflight.apple.com/join/TL6j6Jbn");
 			},
 			changeLanguage() {
 				this.$i18n.locale == 'en' ? this.$i18n.locale = 'zh' : this.$i18n.locale = 'en',

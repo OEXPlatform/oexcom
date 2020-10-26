@@ -14,6 +14,8 @@ const i18n=new VueI18n({
         'en':require('./components/language/en')
     }
 })
+import axios from 'axios'
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 
