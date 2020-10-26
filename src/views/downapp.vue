@@ -9,6 +9,25 @@
 			<img src="../assets/img/iphone5en.png" class="iphone5" v-else>
 			<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
 			<img src="../assets/img/iphone6en.png" class="iphone6" @click="down11" v-else>
+			<!-- <div class="downbutton">
+				<div class="ios" v-if="Language=='zh'" @click="downios">
+					<img src="../assets/img/down5.png" class="downixon">
+					<div class="downText">ios下载</div>
+				</div>
+				<div class="ios" v-else @click="downios">
+					<img src="../assets/img/down5.png" class="downixon">
+					<div class="downText">ios</div>
+				</div>
+			
+				<div class="android" v-if="Language=='zh'" @click="down11">
+					<img src="../assets/img/down6.png" class="downixon">
+					<div class="downText" style="margin-left:15px">android下载</div>
+				</div>
+				<div class="android" v-else @click="down11">
+					<img src="../assets/img/down6.png" class="downixon">
+					<div class="downText" style="margin-left:15px">android</div>
+				</div>
+			</div> -->
 			<img src="../assets/img/iphone2.png" class="iphone2" >
 			<!-- <a href="https://www.btctool.cn/app-download/oexwallet.apk" class="iphone6"></a> -->
 			
@@ -50,6 +69,9 @@
 		methods: {	
 			down11(){
 				 window.open("https://www.btctool.cn/app-download/oexwallet.apk");
+			},
+			downios(){
+				window.open("http://d.ayxfjc.com/oex");
 			},
 			changeLanguage() {
 				this.$i18n.locale == 'en' ? this.$i18n.locale = 'zh' : this.$i18n.locale = 'en',

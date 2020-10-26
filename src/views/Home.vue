@@ -10,7 +10,7 @@
 					<a href="#" class="whitebook active">{{$t('home.toHOME')}}</a>
 					<a href="img/OEX1.0.pdf" target="_blank" class="whitebook" v-if="Language=='zh'">{{$t('home.toWHITEPAPER')}}</a>
 					<a href="img/OEXEN1.0.pdf" target="_blank" class="whitebook" v-else>{{$t('home.toWHITEPAPER')}}</a>
-					<a href="https://oexchain.com" class="whitebook"  target="_blank" >{{$t('home.toOEXCHAIN')}}</a>
+					<a href="http://temp.oexchain.com/" class="whitebook"  target="_blank" >{{$t('home.toOEXCHAIN')}}</a>
 					<a href="https://uniswap.oexchain.com/#/swap" class="whitebook" target="_blank">{{$t('OEXSWAP')}}</a>
 					<a href="https://oexservice.zendesk.com/hc/zh-hk" class="whitebook" target="_blank">{{$t('Announcement')}}</a>
 					<!-- <a href="#" class="whitebook" target="_blank">{{$t('Announcement')}}</a> -->

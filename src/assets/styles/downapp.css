@@ -49,3 +49,57 @@
 			top:3%;
 			right:4%
 		}
+		
+		
+	 .ios {
+		width: 40%;
+		color: #fff;
+		background: #161616;
+		height: 130px;
+		border-radius: 72px;
+		font-size: 27px;
+		font-weight: 500;
+		line-height: 130px;
+				display: flex;
+		padding: 0 30px;
+		/* text-align: center; */
+	}
+	
+ .downbutton {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		width: 92%;
+		margin-top: 120px;
+	}
+	
+	 .android {
+		font-size: 27px;
+		width: 40%;
+		color: #fff;
+		background: #161616;
+		height: 130px;
+		border-radius: 72px;
+		font-weight: 500;
+		line-height: 130px;
+		display: flex;
+				 /* justify-content: space-between; */
+		padding: 0 30px;
+		/* text-align: center; */
+	
+	}
+	
+	 .downixon {
+		width: 100px;
+		height: 100px;
+		margin-top: 14px;
+		margin-left: -11PX;
+	}
+	
+.downText {
+		width: 60%;
+		color: #fff;
+		font-weight: 500;
+		font-size:27px;
+		text-align: center;
+	}
