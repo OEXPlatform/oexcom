@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
 		name: "wbsm",
 		data() {
@@ -69,9 +70,35 @@
 		methods: {	
 			down11(){
 				 window.open("https://www.btctool.cn/app-download/oexwallet.apk");
+				 var href=window.location.href
+				 if(href.split("=")[1]){
+				 var geticodebyip=href.split("=")[1]
+				  axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
+				     }).then(function(res){
+				         console.log(res)
+				     }).catch(function (error) {
+				         console.log(error);
+				     });
+				 		console.log("有参数")
+				 	}else{
+				 		console.log("无参数")
+				 	}
 			},
 			downios(){
 				window.open("https://testflight.apple.com/join/TL6j6Jbn");
+				var href=window.location.href
+				if(href.split("=")[1]){
+				var geticodebyip=href.split("=")[1]
+				 axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
+				    }).then(function(res){
+				        console.log(res)
+				    }).catch(function (error) {
+				        console.log(error);
+				    });
+						console.log("有参数")
+					}else{
+						console.log("无参数")
+					}
 			},
 			changeLanguage() {
 				this.$i18n.locale == 'en' ? this.$i18n.locale = 'zh' : this.$i18n.locale = 'en',
