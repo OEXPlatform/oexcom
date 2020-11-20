@@ -8,7 +8,7 @@
 						<router-link to="/" class="whitebook active">{{$t('home.toHOME')}}</router-link>
 						<a href="img/OEX1.0.pdf" target="_blank" class="whitebook" v-if="Language=='zh'">{{$t('home.toWHITEPAPER')}}</a>
 						<a href="img/OEXEN1.0.pdf" target="_blank" class="whitebook" v-else>{{$t('home.toWHITEPAPER')}}</a>
-						<a href="http://temp.oexchain.com/" class="whitebook" target="_blank">{{$t('home.toOEXCHAIN')}}</a>
+						<a href="https://oexchain.com/" class="whitebook" target="_blank">{{$t('home.toOEXCHAIN')}}</a>
 						<a href="https://uniswap.oexchain.com/#/swap" class="whitebook" target="_blank">{{$t('OEXSWAP')}}</a>
 						<a href="https://oexservice.zendesk.com/hc/zh-hk" class="whitebook" target="_blank">{{$t('Announcement')}}</a>
 						<router-link to="/down" class="download"><img src="../../src/assets/img/appdownload.png" v-if="Language=='zh'" />
@@ -85,7 +85,7 @@
 			<div class="sm">
 				<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
 				<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
-
+				<div class="code" v-if="geticodebyip">邀请码：{{geticodebyip}}</div>
 				<!-- <img src="../assets/img/iphone5.png" class="iphone5"    v-if="Language=='zh'">
 				<img src="../assets/img/iphone5en.png" class="iphone5"  v-else >
 				<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
@@ -114,8 +114,10 @@
 
 
 				<div class="mcstyle" :style="mc">
-					<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
-					<img src="../assets/img/iphone3.png" class="iphone3" v-else>
+				<!-- 	<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
+					<img src="../assets/img/iphone3.png" class="iphone3" v-else> -->
+					<div class="mckuangtext"  v-if="Language=='zh'"> <div>在浏览器中打开后</div> <div>点击页面的Android、IOS</div> <div>下载即可</div> </div>
+					<div class="mckuangtext"  v-else> <div style="font-size: 50px;">Open it in the browser and</div> <div  style="font-size: 50px;">click Android、IOS on the page to </div> <div  style="font-size: 50px;">download it.</div> </div>
 					<img src="../assets/img/iphone4en.png" class="iphone4" v-if="Language=='zh'">
 					<img src="../assets/img/iphone4.png" class="iphone4" v-else>
 				</div>
@@ -138,6 +140,7 @@
 				active: "display:none",
 				sm: true,
 				mc: "",
+				geticodebyip:""
 			}
 		},
 		created() {
@@ -166,11 +169,22 @@
 				console.log(2222)
 
 			}
+			//获取url尾部参数
+			var _this=this
+			var href=window.location.href
+			if(href.split("=")[1]){
+			var geticodebyip=href.split("=")[1]
+				_this.geticodebyip=geticodebyip
+					console.log("有参数")
+				}else{
+					console.log("无参数")
+				}
 		},
 		components: {},
 		mouted() {},
 		methods: {
 			down11() {
+				var _this=this
 				window.open("https://www.btctool.cn/app-download/oexwallet.apk");
 				var href=window.location.href
 				if(href.split("=")[1]){

@@ -34,14 +34,14 @@
 			background: #141426;
 			opacity: 0.9;
 		}
-		.iphone3{
+	/* 	.iphone3{
 			    width: 80%;
 			    padding-bottom: 8%;
 			    position: absolute;
 			    bottom:27%;
 			    left: 10%;
 			    height: 32%;
-		}
+		} */
 		.iphone4{
 			width: 50%;
 			padding-bottom: 20%;
@@ -102,4 +102,34 @@
 		font-weight: 500;
 		font-size:27px;
 		text-align: center;
+	}
+	
+	.code{
+		    font-size: 70px;
+		    font-weight: 600;
+		    text-align: center;
+		    color: #333;
+		    height: 100px;
+	}
+	.mckuangtext{
+		border:8px solid  #23C9A7;
+		border-radius: 50px;
+		position: absolute;
+		bottom:27%;
+		left: 10%;
+		/* height: 28%; */
+		 width:74%;
+		text-align: center;
+		 padding: 120px 30px;
+		 background: rgb(251,251,251,0.1);
+	
+	}
+	
+	.mckuangtext div{
+	color: #fff;
+	font-size: 55px;
+		margin: 20px 0;
+	}
+	.mckuangtext div:first-child{
+	margin-top: 50px;	
 	}

@@ -4,7 +4,7 @@
 		<div class="sm">
 			<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
 			<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
-			
+			<div class="code" v-if="geticodebyip">邀请码：{{geticodebyip}}</div>
 			<!-- <img src="../assets/img/iphone5.png" class="iphone5"  v-if="Language=='zh'">
 			<img src="../assets/img/iphone5en.png" class="iphone5" v-else>
 			<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
@@ -33,8 +33,10 @@
 			
 			
 			<div class="mcstyle" :style="mc">
-				<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
-				<img src="../assets/img/iphone3.png" class="iphone3" v-else>
+		<!-- 		<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
+				<img src="../assets/img/iphone3.png" class="iphone3" v-else> -->
+				<div class="mckuangtext"  v-if="Language=='zh'"> <div>在浏览器中打开后</div> <div>点击页面的Android、IOS</div> <div>下载即可</div> </div>
+				<div class="mckuangtext"  v-else> <div style="font-size: 50px;">Open it in the browser and</div> <div  style="font-size: 50px;">click Android、IOS on the page to </div> <div  style="font-size: 50px;">download it.</div> </div>
 				<img src="../assets/img/iphone4en.png" class="iphone4" v-if="Language=='zh'">
 				<img src="../assets/img/iphone4.png" class="iphone4" v-else>
 			</div>
@@ -51,6 +53,7 @@
 				mc:"",
 				Language: "zh",
 				clientHeight: '',
+				geticodebyip:""
 			}
 		},
 		created() {
@@ -64,6 +67,16 @@
 			}else{
 				this.mc="display:none"
 			}
+			//获取url尾部参数
+			var _this=this
+			var href=window.location.href
+			if(href.split("=")[1]){
+			var geticodebyip=href.split("=")[1]
+				_this.geticodebyip=geticodebyip
+					console.log("有参数")
+				}else{
+					console.log("无参数")
+				}
 		},
 		components: {},
 		mouted() {},
@@ -73,7 +86,7 @@
 				 var href=window.location.href
 				 if(href.split("=")[1]){
 				 var geticodebyip=href.split("=")[1]
-				  axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
+				  axios.get('https://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
 				     }).then(function(res){
 				         console.log(res)
 				     }).catch(function (error) {
@@ -89,7 +102,7 @@
 				var href=window.location.href
 				if(href.split("=")[1]){
 				var geticodebyip=href.split("=")[1]
-				 axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
+				 axios.get('https://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
 				    }).then(function(res){
 				        console.log(res)
 				    }).catch(function (error) {

@@ -1,0 +1,199 @@
+.phone{
+	background: rgba(0, 201, 167, 1);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+header {
+	background: #fafafa;
+	padding:10px 20px;
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	z-index: 9999;
+		width: 97.3%;
+}
+.resAllphone{
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		background: rgba(20, 20, 38, 1);
+		font-family: PingFang SC;
+		z-index: 9999;
+}
+
+.header-btn {
+	padding: 0px 12px;
+	border-radius: 20px;
+	border: 2px solid #007aff;
+	color: #007AFF;
+	font-size: 28px;
+	cursor: pointer;
+	text-decoration: none;
+	height: 46px;
+	line-height: 46px;
+	margin: 15px 0;
+	font-weight: 500;
+
+}
+
+.phone .title {
+	font-size: 35px;
+	color: #333;
+	font-weight: 800;
+	padding: 15px 0;
+
+}
+
+ .phoneredEnvelopeskuang {
+	z-index: 1003;
+	display: block;
+	opacity: 1;
+	background: url(../img/closered.png) no-repeat  ;
+	background-size: 100% 100%;
+	border-radius: 18px;
+	color: rgb(255, 243, 224);
+	text-align: center;
+	height: 1000px;
+	width: 760px;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	max-height: 90%;
+	max-width: 640px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin: auto;
+	overflow-y: auto;
+	will-change: top, opacity;
+	text-align: center;
+} 
+.concentall{
+	position: absolute;
+}
+
+.phonered-content {
+	text-align: center;
+	padding: 100px 100px;
+	font-weight: 600;
+}
+
+.phonered-content div {
+	font-size: 45px;
+	color: #333;
+}
+
+.phoneinput {
+	width: 100%;
+	background: url(../img/phongbg.png);
+	background-size: 100% 100%;
+	height: 97px;
+	margin-top: 100px;
+}
+.phoneyzm{
+	width: 63%;
+	background: url(../img/phoneyzm.png);
+	background-size: 100% 100%;
+	height: 97px;
+		position: relative;
+	margin-top: 26px;
+}
+
+.phoneinput {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+
+}
+
+.phoneinput div {
+	font-size: 35px;
+	font-weight: 800;
+}
+
+.btn {
+	width: 100%;
+	max-width:1000px;
+	height: 135px;
+	/* background: #1F2340; */
+	/* color: #fff; */
+	/* border-radius: 20px; */
+	margin: 0 auto;
+	background: url(../img/phonenext.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 150px;
+	
+}
+
+.greenbg{
+	width: 100%;
+	padding-bottom: 100%;
+	padding-top: 340px;
+	/* background: rgba(0, 142, 117, 1); */
+	border-radius: 0px 0px 36px 36px;
+	
+}
+.greenbgtext{
+	position: absolute;
+	top: 200px;
+	width:82%;
+	max-width: 900px;
+	min-width: 600px;
+	left: 50%;
+	margin-left: -505px;
+	text-align: center;
+	z-index: 1003;
+	display: block;
+	opacity: 1;
+	/* background: #007AFF; */
+	border-radius: 18px;
+	color: rgb(255, 243, 224);
+	text-align: center;
+	/* height: 1000px; */
+	width: 700px;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	max-height: 90%;
+	max-width: 600px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin: auto;
+	overflow-y: auto;
+	will-change: top, opacity;
+}
+
+.greenbg .title1{
+	color: #fff;
+	font-family: PingFang SC;
+	font-size: 60px;
+	font-weight: 900;
+}
+.greenbg .title2{
+	color:rgba(32, 141, 122, 1);
+	font-family: PingFang SC;
+	font-size: 30px;
+	font-weight: 400;
+	margin-top: 10upx;
+}
+
+.yzmbtn{
+	width: 30%;
+	height: 90px;
+	background: #fff;
+	font-size: 26px;
+	line-height: 90px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #00C9A7;
+	margin-top: 32px;
+	border-radius: 25px;
+}
+.email{
+	font-size: 30px;
+	color: #208D7A;
+	margin-top: 70px;
+}
+
