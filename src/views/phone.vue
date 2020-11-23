@@ -58,7 +58,7 @@
 				</header>
 				<div class="phoneredEnvelopeskuang" @click="openhongbaoclick">
 					<div class="red-content">
-							<div>{{name}}</div>
+						<div>{{name}}</div>
 						<div>{{redtext}}</div>
 						<div style="margin-top: 180px;" v-if="timeout">超过24小时未领取</div>
 					</div>
@@ -82,14 +82,15 @@
 								<input type="number" style="width: 80%;	position: absolute;right: 20px;height: 89%;background: transparent;border:none;outline:0;font-size: 26px;color:#fff;text-align: right;"
 								 v-model="getyzm" placeholder="输入验证码" @input="yzm" />
 							</div>
-							<div class="yzmbtn" @click="send_vcode" v-if="sendVode">获取验证码</div>
+							<div class="yzmbtn" @click="send_vcode" v-if="sendVode" v-loading="loading">获取验证码</div>
 							<div class="yzmbtn" v-else>{{vtext}}</div>
 						</div>
-						<router-link :to="nav" style="z-index: 999;" v-if="navred=='111'" @click="next">
-							<div class="btn"></div>
-						</router-link>
-						<div class="btn" @click="next2" v-else></div>
-						<!-- 	<div class="email">或通过邮箱登录</div> -->
+						<div @click="next" class="btn">
+	<!-- 								<router-link to="/redsEnvelopes?code=YoM0Pf0EwGfO6AZDciCTFA==&redtype=2&mobile=15910223706&vcode=1234" style="z-index: 999;" v-if="navred=='111'" @click="routerLink">
+								<div class="btn">11</div>
+							</router-link -->>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -131,8 +132,11 @@
 				redlist: [],
 				status: "0",
 				alllist: [],
-				redtext:"",
-				timeout:""
+				redtext: "",
+				timeout: "",
+				url: "http://192.168.1.19:80",
+				// url:"http://api.oexchain.com"
+				loading: false
 			}
 		},
 		created() {
@@ -164,29 +168,23 @@
 			if (localStorage.getItem(_this.geticodebyip) != "1") { //无缓存
 				_this.one = "display:none" //详情隐藏
 				_this.mc = "display:block" //领取红包显示
-				axios.post('http://api.oexchain.com/api/redgift/getexists.oex?redid=' + _this.geticodebyip, { // 判断红包状态
+				axios.post(_this.url + '/api/redgift/getexists.oex?redid=' + _this.geticodebyip, { // 判断红包状态
 				}).then(function(res) {
-					if (res.data.data != "timeout" && res.data.data != "none" ) { //可以领取
+					if (res.data.data != "timeout" && res.data.data != "none") { //可以领取
 						_this.mc1 = "display:block" //红包可领取图片显示
 						_this.mcclose = "display:none" //红包不可领取图片隐藏
 					} else {
-							
+
 						//改变红包上的字显示
 						if (res.data.data == "timeout") {
-								_this.redtext="该红包已失效"
-								_this.timeout=true
+							_this.redtext = "该红包已失效"
+							_this.timeout = true
 						} else if (res.data.data == "none") {
-							_this.redtext="该红包已全部领取"
-						}
-						// // _this.one = "display:block" //红包列表显示
-						// // // _this.mc = "display:none" //领取页面隐藏
-						// // // _this.mc1 = "display:block"
-						// // _this.mcclose = "display:block"
-						// _this.one = "display:block" //红包列表
-						// _this.mc = "display:none" //登陆页					
+							_this.redtext = "该红包已全部领取"
+						}		
 						_this.one = "display:block" //红包列表
 						_this.mc = "display:none" //登陆页
-						axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.geticodebyip, { //查看当前红包的详情
+						axios.post(_this.url + '/api/redgift/getAlreadyList.oex?redid=' + _this.geticodebyip, { //查看当前红包的详情
 						}).then(function(res) {
 							if (res.data.code == 200) { //筛选
 								var arr1 = res.data.data
@@ -201,10 +199,8 @@
 								let me = arr1.filter(item => {
 									return item.rpk == rpk;
 								})
-								console.log(me)
-								// if (me.length > 0) {
-									_this.amountnum = ""
-									_this.assetname = ""
+								_this.amountnum = ""
+								_this.assetname = ""
 								// }
 								_this.status = arr2.length
 								_this.redlist = arr4
@@ -213,7 +209,7 @@
 						}).catch(function(error) {
 							// console.log(error);
 						});
-						axios.post('http://api.oexchain.com/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip + "&pk=" + _this.emailPhone, { //获取用户信息
+						axios.post(_this.url + '/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip + "&pk=" + _this.emailPhone, { //获取用户信息
 						}).then(function(res) {
 							_this.name = res.data.data.sender
 							_this.remaketext = res.data.data.remake
@@ -222,12 +218,12 @@
 						}).catch(function(error) {
 							console.log(error);
 						});
-					
+
 					}
 				}).catch(function(error) {
 					console.log(error);
 				});
-				axios.post('http://api.oexchain.com/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip, { //获取红包信息接口
+				axios.post(_this.url + '/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip, { //获取红包信息接口
 				}).then(function(res) {
 					console.log(res)
 					_this.name = res.data.data.sender
@@ -240,7 +236,7 @@
 			} else { //有缓存
 				_this.one = "display:block" //红包列表
 				_this.mc = "display:none" //登陆页
-				axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.geticodebyip, { //查看当前红包的详情
+				axios.post(_this.url + '/api/redgift/getAlreadyList.oex?redid=' + _this.geticodebyip, { //查看当前红包的详情
 				}).then(function(res) {
 					if (res.data.code == 200) { //筛选
 						var arr1 = res.data.data
@@ -266,7 +262,7 @@
 				}).catch(function(error) {
 					console.log(error);
 				});
-				axios.post('http://api.oexchain.com/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip + "&pk=" + _this.emailPhone, { //获取用户信息
+				axios.post(_this.url + '/api/redgift/getRedGiftDetail?redid=' + _this.geticodebyip + "&pk=" + _this.emailPhone, { //获取用户信息
 				}).then(function(res) {
 					_this.name = res.data.data.sender
 					_this.remaketext = res.data.data.remake
@@ -285,7 +281,7 @@
 			},
 			input1() {
 				var _this = this
-								console.log(_this.getNum)
+				console.log(_this.getNum)
 				if (_this.getNum.indexOf("@") != -1) {
 					_this.rtype = 1
 				} else {
@@ -294,28 +290,11 @@
 			},
 			yzm() {
 				var v = this
-								console.log(v.getyzm)
-				if (v.getNum && v.getyzm) {
-					//验证手机或者邮箱是否和验证码相符
-					axios.post('http://api.oexchain.com/api/ouser/valPk.oex?&mobile=' + v.getNum + '&vcode=' + v.getyzm, { // 还可以直接把参数拼接在url后边
-					}).then(function(res) {
-						if (res.data.code == 200) {
-							// //判断是否过期
-							v.beOverdue = true
-							v.name = res.data.data.sender
-							v.navred = "111"
-							v.nav = "/redsEnvelopes?pk=" + v.getNum + '&redid=' + v.geticodebyip + '&code=' + v.getyzm + '&redtype=' + v.redtype
 
-						} else {
-							
-						}
-					}).catch(function(error) {
-						console.log(error);
-					});
-				}
 			},
 			next() {
 				var v = this
+				console.log(111)
 				if (v.getNum == '') {
 					alert("请输入手机/邮箱!")
 					return;
@@ -339,66 +318,83 @@
 						return;
 					}
 				}
-
+					alert(1234)
 				//验证手机或者邮箱是否和验证码相符
-				axios.post('http://api.oexchain.com/api/ouser/valPk.oex?&mobile=' + v.getNum + '&vcode=' + v.getyzm, { // 还可以直接把参数拼接在url后边
+				axios.post(v.url + '/api/ouser/valPk.oex?&mobile=' + v.getNum + '&vcode=' + v.getyzm, { // 还可以直接把参数拼接在url后边
 				}).then(function(res) {
+					console.log(res)
 					if (res.data.code == 200) {
-						console.log(res)
 						// //判断是否过期
 						v.beOverdue = true
 						v.name = res.data.data.sender
-						v.nav = "/redsEnvelopes?pk=" + v.getNum + '&redid=' + v.geticodebyip + '&code=' + v.getyzm + '&redtype=' + v.redtype
+					const par = {
+						pk: v.getNum,
+						redid: v.geticodebyip,
+						code: v.getyzm,
+						redtype: v.redtype
+					};
+					 v.$router.push({
+					    path:'/redsEnvelopes',
+					    query: par
+					 })
 					} else {
-						// alert(11)
-					}
-				}).catch(function(error) {
-					console.log(error);
-				});
-			},
-			next2() {
-				var v = this
-				if (v.getNum == '') {
-					alert("请输入手机/邮箱!")
-					return;
-				}
-
-				if (!v.getyzm) {
-					alert('请输入验证码')
-					return;
-				}
-
-				//判断邮箱 或手机号
-				if (v.getNum.indexOf("@") != -1) {} else {
-					if (!(/^1[3456789]\d{9}$/.test(v.getNum))) {
-						alert("手机号有误!")
-						return;
-					}
-					var numb = this.getNum
-					var numb2 = numb.substring(0, 3)
-					if (numb2 == "165" || numb2 == "171" || numb2 == "170" || numb2 == "199" || numb2 == "147") {
-						alert("手机号有误!")
-						return;
-					}
-				}
-				//验证手机或者邮箱是否和验证码相符
-				axios.post('http://api.oexchain.com/api/ouser/valPk.oex?&mobile=' + v.getNum + '&vcode=' + v.getyzm, { // 还可以直接把参数拼接在url后边
-				}).then(function(res) {
-					if (res.data.code == 200) {
-						console.log(res)
-						// //判断是否过期
-						v.beOverdue = true
-						v.name = res.data.data.sender
-
-					} else {
-						// alert(res.data)
 						alert(res.data.message)
 					}
 				}).catch(function(error) {
+					v.nav = window.location.href
+					
+					console.log(window.location.href)
 					console.log(error);
 				});
-
 			},
+			// next2() {
+			// 	var v = this
+			// 	if (v.getNum == '') {
+			// 		alert("请输入手机/邮箱!")
+			// 		return;
+			// 	}
+
+			// 	if (!v.getyzm) {
+			// 		alert('请输入验证码')
+			// 		return;
+			// 	}
+
+			// 	//判断邮箱 或手机号
+			// 	if (v.getNum.indexOf("@") != -1) {} else {
+			// 		if (!(/^1[3456789]\d{9}$/.test(v.getNum))) {
+			// 			alert("手机号有误!")
+			// 			return;
+			// 		}
+			// 		var numb = this.getNum
+			// 		var numb2 = numb.substring(0, 3)
+			// 		if (numb2 == "165" || numb2 == "171" || numb2 == "170" || numb2 == "199" || numb2 == "147") {
+			// 			alert("手机号有误!")
+			// 			return;
+			// 		}
+			// 	}
+			// 	v.navred = "111"
+			// 	//验证手机或者邮箱是否和验证码相符
+			// 	axios.post(v.url + '/api/ouser/valPk.oex?&mobile=' + v.getNum + '&vcode=' + v.getyzm, { // 还可以直接把参数拼接在url后边
+			// 	}).then(function(res) {
+			// 		if (res.data.code == 200) {
+			// 			v.nav = "/redsEnvelopes?pk=" + v.getNum + '&redid=' + v.geticodebyip + '&code=' + v.getyzm + '&redtype=' + v.redtype
+			// 			console.log(v.nav)
+			// 			// //判断是否过期
+			// 			v.beOverdue = true
+			// 			v.name = res.data.data.sender
+
+			// 		} else {
+			// 			// alert(res.data)
+			// 			alert(res.data.message)
+			// 			v.nav = window.location.href
+			// 			console.log(window.location.href)
+			// 		}
+			// 	}).catch(function(error) {
+			// 		console.log(error);
+			// 		v.nav = window.location.href
+			// 	});
+
+			// },
 			send_vcode() {
 				//发送验证码
 				const _this = this;
@@ -406,26 +402,27 @@
 					alert('请输入手机/邮箱')
 					return;
 				}
-				_this.getTime();
-				axios.post('http://api.oexchain.com/api/ouser/getcode.oex?mobile=' + _this.getNum + '&pk=' + "&rtype=" + _this.rtype, { // 还可以直接把参数拼接在url后边
+				_this.loading = true
+				console.log(_this.rtype)
+				axios.post(_this.url + '/api/ouser/getcode.oex?mobile=' + _this.getNum + "&rtype=" + _this.rtype + "&codetype=3", { // 还可以直接把参数拼接在url后边
 				}).then(function(res) {
 					if (res.data.code == 200) {
-						console.log(res)
-					}else{
+						_this.loading = false
 						alert(res.data.message)
+						_this.getTime();
+					} else {
+						_this.loading = false
+						alert(res.data.message)
+
 					}
-					alert(res.data.message)
 				}).catch(function(error) {
 					console.log(error);
+					_this.loading = false
 				});
-
-
-
 			},
 			getTime() {
 				//倒计时
 				var _this = this;
-
 				var num = 60;
 				var timer = setInterval(function() {
 					if (num <= 0) {
@@ -441,6 +438,10 @@
 				}, 1000)
 				_this.sendVode = !_this.sendVode;
 			},
+			routerLink() {
+				var _this = this
+
+			}
 		}
 	}
 </script>

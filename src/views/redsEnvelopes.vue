@@ -76,7 +76,9 @@
 				remaketexthc: "",
 				namehc: "",
 				amountnumhc: "",
-				assetnamehc: ""
+				assetnamehc: "",
+				url:"http://192.168.1.19:80",
+				// url:"http://api.oexchain.com"
 			}
 		},
 		created() {
@@ -98,9 +100,9 @@
 				retype: hrefALL[4].split("&")[0]
 			}
 			_this.datalist = data
+			console.log(_this.datalist.geticodebyip)
 			//检查是否过期
-			axios.post('http://api.oexchain.com/api/redgift/getexists.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this.datalist
-				.emailPhone, { // 还可以直接把参数拼接在url后边
+			axios.post(_this.url+'/api/redgift/getexists.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this.datalist.emailPhone, { // 还可以直接把参数拼接在url后边
 				}).then(function(res) {
 				if (res.data.data = "object") {
 					console.log("可以领取  页面不一样")
@@ -121,7 +123,7 @@
 			}
 			if (_this.datalist.emailPhone && _this.datalist.geticodebyip && _this.datalist.vcode && _this.datalist.retype) {
 				//检查当前红包还有没有未领取的 是否已经过期 当前用户是否已经领取过 
-				axios.post('http://api.oexchain.com/api/redgift/getexists.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this
+				axios.post(_this.url+'/api/redgift/getexists.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this
 					.datalist.emailPhone, { // 还可以直接把参数拼接在url后边
 					}).then(function(res) {
 					console.log(res)
@@ -129,7 +131,7 @@
 						console.log("未领取")
 						_this.mc = "display:block"
 						//获取用户信息
-						axios.post('http://api.oexchain.com/api/redgift/getRedGiftDetail?redid=' + _this.datalist.geticodebyip + "&pk=" +
+						axios.post(_this.url+'/api/redgift/getRedGiftDetail?redid=' + _this.datalist.geticodebyip + "&pk=" +
 							_this.datalist.emailPhone, { // 还可以直接把参数拼接在url后边
 							}).then(function(res) {
 							console.log(res)
@@ -140,7 +142,7 @@
 							console.log(error);
 						});
 						//查看当前红包的详情
-						axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
+						axios.post(_this.url+'/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
 						}).then(function(res) {
 							if (res.data.code == 200) {
 								console.log(res)
@@ -166,7 +168,7 @@
 						_this.mc = "display:none"
 						console.log("已经领取领取等")
 						//获取用户信息
-						axios.post('http://api.oexchain.com/api/redgift/getRedGiftDetail?redid=' + _this.datalist.geticodebyip + "&pk=" +
+						axios.post(_this.url+'/api/redgift/getRedGiftDetail?redid=' + _this.datalist.geticodebyip + "&pk=" +
 							_this.datalist.emailPhone, { // 还可以直接把参数拼接在url后边
 							}).then(function(res) {
 							console.log(res)
@@ -178,7 +180,7 @@
 							console.log(error);
 						});
 						//查看当前红包的详情
-						axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
+						axios.post(_this.url+'/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
 						}).then(function(res) {
 							if (res.data.code == 200) {
 								console.log(res)
@@ -251,14 +253,14 @@
 			openhongbao() {
 				var _this = this
 				//抢红包接口
-				axios.post('http://api.oexchain.com/api/redgift/rob.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this.datalist
+				axios.post(_this.url+'/api/redgift/rob.oex?redid=' + _this.datalist.geticodebyip + '&pk=' + _this.datalist
 					.emailPhone + '&vcode=' + _this.datalist.vcode, { // 还可以直接把参数拼接在url后边
 					}).then(function(res) {
 					console.log(res)
 					if (res.data.code == 200) {
 						if (res.data.data == "already" || res.data.data == "none" || res.data.data == "timeout") {
 							//查看当前红包的详情
-							axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
+							axios.post(_this.url+'/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
 							}).then(function(res) {
 								console.log(res)
 								if (res.data.code == 200) {
@@ -292,7 +294,7 @@
 							_this.openredstyle = "display:block"
 							// /api/redgift/getAlreadyList.oex
 							//查看当前红包的详情
-							axios.post('http://api.oexchain.com/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
+							axios.post(_this.url+'/api/redgift/getAlreadyList.oex?redid=' + _this.datalist.geticodebyip, { // 还可以直接把参数拼接在url后边
 							}).then(function(res) {
 								if (res.data.code == 200) {
 									console.log(res)
@@ -327,6 +329,7 @@
 						}
 					}else{
 						alert(res.data.message)
+						console.log(res.data)
 					}
 				}).catch(function(error) {
 					console.log(error);

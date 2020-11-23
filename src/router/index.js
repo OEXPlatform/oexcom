@@ -8,32 +8,31 @@ import phone from '../views/phone.vue'
 
 
 Vue.use(VueRouter)
-
 const routes = [
 	//单个路由均为对象类型，path代表的是路径，component代表组件
 	{
 		path: '/',
-		name:'home',
+		name: 'home',
 		component: home
 	},
 	{
 		path: '/down',
-		name:'Down',
+		name: 'Down',
 		component: Down
 	},
 	{
 		path: '/downapp',
-		name:'Downapp',
+		name: 'Downapp',
 		component: Downapp
 	},
 	{
-		path: '/redsEnvelopes',
-		name:'redsEnvelopes',
+		path: "/redsEnvelopes",
+		name: 'redsEnvelopes',
 		component: redsEnvelopes
 	},
 	{
 		path: '/phone',
-		name:'phone',
+		name: 'phone',
 		component: phone
 	},
 

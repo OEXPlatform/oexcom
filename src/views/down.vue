@@ -175,7 +175,7 @@
 			if(href.split("=")[1]){
 			var geticodebyip=href.split("=")[1]
 				_this.geticodebyip=geticodebyip
-					console.log("有参数")
+					console.log("有参数") 
 				}else{
 					console.log("无参数")
 				}
