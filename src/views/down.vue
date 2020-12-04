@@ -30,16 +30,16 @@
 					<div class="img3"></div>
 					<div class="img4"></div>
 					<div class="img5">
-							<div style="height:auto;position: relative;" @mouseover="mouseOver" @mouseleave="mouseLeave">
-								<div style=" display: inline;">
-									<img src="../assets/img/down5.png" style="margin-top:10px" />
-								</div>
-								<div style=" display: inline;">
-									<span class="span1">{{$t('ios')}}</span>
-								</div>
-								<div class="ewm" :style="active">
-								</div>
+						<div style="height:auto;position: relative;" @mouseover="mouseOver" @mouseleave="mouseLeave">
+							<div style=" display: inline;">
+								<img src="../assets/img/down5.png" style="margin-top:10px" />
 							</div>
+							<div style=" display: inline;">
+								<span class="span1">{{$t('ios')}}</span>
+							</div>
+							<div class="ewm" :style="active">
+							</div>
+						</div>
 					</div>
 					<div class="img6">
 						<div style="height:auto;position: relative;" @mouseover="mouseOver2" @mouseleave="mouseLeave2">
@@ -55,8 +55,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<div class="footer" style="width: 104%;min-width: 1500px;">
 				<div class="footer_center">
 					<div class="center_left footer_left">
@@ -72,7 +70,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="coypRight" style="width: 104%;min-width: 1500px">
 				<span>© 2019 Theme designed by oex.com</span>
 				<span class="line">|</span>
@@ -86,10 +83,6 @@
 				<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
 				<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
 				<div class="code" v-if="geticodebyip">邀请码：{{geticodebyip}}</div>
-				<!-- <img src="../assets/img/iphone5.png" class="iphone5"    v-if="Language=='zh'">
-				<img src="../assets/img/iphone5en.png" class="iphone5"  v-else >
-				<img src="../assets/img/iphone6.png" class="iphone6" @click="down11"  v-if="Language=='zh'">
-				<img src="../assets/img/iphone6en.png" class="iphone6" @click="down11" v-else> -->
 				<div class="downbutton">
 					<div class="ios" v-if="Language=='zh'" @click="downios">
 						<img src="../assets/img/down5.png" class="downixon">
@@ -99,7 +92,6 @@
 						<img src="../assets/img/down5.png" class="downixon">
 						<div class="downText">ios</div>
 					</div>
-
 					<div class="android" v-if="Language=='zh'" @click="down11">
 						<img src="../assets/img/down6.png" class="downixon">
 						<div class="downText" style="margin-left:15px">android下载</div>
@@ -110,14 +102,17 @@
 					</div>
 				</div>
 				<img src="../assets/img/iphone2.png" class="iphone2">
-				<!-- <a href="https://www.btctool.cn/app-download/oexwallet.apk" class="iphone6"></a> -->
-
-
 				<div class="mcstyle" :style="mc">
-				<!-- 	<img src="../assets/img/iphone3en.png" class="iphone3" v-if="Language=='zh'">
-					<img src="../assets/img/iphone3.png" class="iphone3" v-else> -->
-					<div class="mckuangtext"  v-if="Language=='zh'"> <div>在浏览器中打开后</div> <div>点击页面的Android、IOS</div> <div>下载即可</div> </div>
-					<div class="mckuangtext"  v-else> <div style="font-size: 50px;">Open it in the browser and</div> <div  style="font-size: 50px;">click Android、IOS on the page to </div> <div  style="font-size: 50px;">download it.</div> </div>
+					<div class="mckuangtext" v-if="Language=='zh'">
+						<div>在浏览器中打开后</div>
+						<div>点击页面的Android、IOS</div>
+						<div>下载即可</div>
+					</div>
+					<div class="mckuangtext" v-else>
+						<div style="font-size: 50px;">Open it in the browser and</div>
+						<div style="font-size: 50px;">click Android、IOS on the page to </div>
+						<div style="font-size: 50px;">download it.</div>
+					</div>
 					<img src="../assets/img/iphone4en.png" class="iphone4" v-if="Language=='zh'">
 					<img src="../assets/img/iphone4.png" class="iphone4" v-else>
 				</div>
@@ -129,7 +124,7 @@
 <script>
 	import axios from 'axios'
 	export default {
-		
+
 		name: "wbsm",
 		data() {
 			return {
@@ -140,80 +135,77 @@
 				active: "display:none",
 				sm: true,
 				mc: "",
-				geticodebyip:""
+				geticodebyip: "",
+				edition: ""
 			}
 		},
 		created() {
-			// console.log(window.location.href)
-		
 			var _this = this
 			var b = window.navigator.userAgent.toLowerCase()
 			var bIsAndroid = b.match(/android/i) == "android"
-			// var iphone=b.match(/iPhone/i) == "iPhone"
-			// var iPad=b.match(/iPad/i) == "iPad"
-
 			var bIsIpad = b.match(/ipad/i) == "ipad";
 			var bIsIphoneOs = b.match(/iphone os/i) == "iphone os";
-
-
 			if (b.indexOf('micromessenger') > -1) {
-				console.log(11)
 				this.mc = "display:block"
 			} else {
 				this.mc = "display:none"
 			}
 			if (bIsAndroid || bIsIphoneOs || bIsIpad) {
 				_this.sm = false
-
-			} else {
-				console.log(2222)
-
-			}
+			} else {}
 			//获取url尾部参数
-			var _this=this
-			var href=window.location.href
-			if(href.split("=")[1]){
-			var geticodebyip=href.split("=")[1]
-				_this.geticodebyip=geticodebyip
-					console.log("有参数") 
-				}else{
-					console.log("无参数")
+			var _this = this
+			var href = window.location.href
+			if (href.split("=")[1]) {
+				var geticodebyip = href.split("=")[1]
+				_this.geticodebyip = geticodebyip
+				// console.log("有参数") 
+			} else {
+				// console.log("无参数")
+			}
+			axios.get('http://api.oexchain.com/api/rpc/getlastversion').then(function(res) {
+				if (res.data.code == 200) {
+					console.log(res.data.data)
+					_this.edition = res.data.data
+				} else {
+					alert(res.data.message)
 				}
+			}).catch(function(error) {
+				console.log(error);
+			});
 		},
 		components: {},
 		mouted() {},
 		methods: {
 			down11() {
-				var _this=this
-				window.open("https://www.btctool.cn/app-download/oexwallet.apk");
-				var href=window.location.href
-				if(href.split("=")[1]){
-				var geticodebyip=href.split("=")[1]
-				 axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
-				    }).then(function(res){
-				        console.log(res)
-				    }).catch(function (error) {
-				        console.log(error);
-				    });
-						console.log("有参数")
-					}else{
-						console.log("无参数")
+				var _this = this
+				if (_this.edition) {
+					window.open("https://www.oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
+					var href = window.location.href
+					if (href.split("=")[1]) {
+						var geticodebyip = href.split("=")[1]
+						axios.get('http://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
+						}).then(function(res) {
+						}).catch(function(error) {
+						});
+						// console.log("有参数")
+					} else {
+						// console.log("无参数")
 					}
+				}
 			},
 			downios() {
-				var href=window.location.href
-				if(href.split("=")[1]){
-				var geticodebyip=href.split("=")[1]
-				 axios.get('http://api.oexchain.com/api/bundipcode.oex?icode='+geticodebyip,{       // 还可以直接把参数拼接在url后边
-				    }).then(function(res){
-				        console.log(res)
-				    }).catch(function (error) {
-				        console.log(error);
-				    });
-						console.log("有参数")
-					}else{
-						console.log("无参数")
-					}
+				var href = window.location.href
+				if (href.split("=")[1]) {
+					var geticodebyip = href.split("=")[1]
+					axios.get('http://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
+					}).then(function(res) {
+					}).catch(function(error) {
+					});
+					// console.log("有参数")
+				} else {
+					// console.log("无参数")
+				}
 				window.open("https://testflight.apple.com/join/TL6j6Jbn");
 			},
 			changeLanguage() {
@@ -221,7 +213,7 @@
 					console.log(this.$i18n.locale)
 				this.Language = this.$i18n.locale
 				//设置中英文模式
-				localStorage.setItem('languageSet', this.$i18n.locale) //将用户设置存储到localStorage以便用户下次打开时使用此设置
+				localStorage.setItem('languageSet', this.$i18n.locale)
 			},
 			remind() {
 				this.$toast(this.$t('user.loginUsername'))
