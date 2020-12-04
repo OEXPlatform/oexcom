@@ -3,9 +3,7 @@ import VueRouter from 'vue-router'
 import home from '../views/Home.vue'
 import Down from '../views/down.vue'
 import Downapp from '../views/downapp.vue'
-import redsEnvelopes from '../views/redsEnvelopes.vue'
-import phone from '../views/phone.vue'
-
+import receiveRedEnvelope from '../views/receiveRedEnvelope.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -25,18 +23,12 @@ const routes = [
 		name: 'Downapp',
 		component: Downapp
 	},
-	{
-		path: "/redsEnvelopes",
-		name: 'redsEnvelopes',
-		component: redsEnvelopes
-	},
-	{
-		path: '/phone',
-		name: 'phone',
-		component: phone
-	},
 
-
+	{
+		path: '/receiveRedEnvelope',
+		name: 'receiveRedEnvelope',
+		component: receiveRedEnvelope
+	},
 ]
 
 const router = new VueRouter({

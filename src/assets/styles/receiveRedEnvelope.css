@@ -1,0 +1,226 @@
+.receiveRedEnvelopetop {
+	position: fixed;
+	top: 0;
+	z-index: 9;
+	width: 98%;
+	display: flex;
+	padding: 6px 15px;
+	justify-content: space-between;
+	box-shadow: 1px 2px 10px #d4d4d4;
+	background: #fafafa;
+
+}
+
+.receiveRedEnvelopetop .redtitle {
+	font-size: 40px;
+	font-weight: 600;
+	font-family: PingFang SC;
+	color: #1F2340;
+	margin-top: 8px;
+}
+
+.receiveRedEnvelope .landingPage {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #00C9A7;
+}
+
+.receiveRedEnvelope .landingPage .content {
+	width: 68%;
+	margin: 0 auto;
+	/*水平居中*/
+	position: relative;
+	top: 30%;
+	margin-top: -150px;
+}
+
+.receiveRedEnvelope .landingPage .content .Headline {
+	color: #fff;
+	font-family: PingFang SC;
+	font-size: 60px;
+	font-weight: 900;
+	text-align: center;
+}
+
+.receiveRedEnvelope .landingPage .content .Subtitle {
+	color: rgba(32, 141, 122, 1);
+	font-family: PingFang SC;
+	font-size: 30px;
+	font-weight: 400;
+	margin-top: 10upx;
+	text-align: center;
+	margin-top: 20px;
+}
+
+
+/*红包封面*/
+.receiveRedEnvelope .redCover {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(20, 20, 38, 1);
+	z-index: 11;
+	overflow-x: hidden;
+}
+
+.receiveRedEnvelope .redCover .redCoverBG {
+	width: 750px;
+	height: 1160px;
+	margin: 0 auto;
+	position: relative;
+	top: 30%;
+	margin-top: -280px;
+	z-index: 5;
+	background: url(../img/red_bg_en.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+}
+
+.receiveRedEnvelope .redCover .redCoverBGNO {
+	width: 750px;
+	height: 1160px;
+	margin: 0 auto;
+	position: relative;
+	top: 30%;
+	margin-top: -280px;
+	z-index: 5;
+	background: url(../img/closered.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+}
+
+.receiveRedEnvelope .redCover .redCoverBG .redCoverText,
+.receiveRedEnvelope .redCover .redCoverBGNO .redCoverText {
+	position: absolute;
+	top: 55%;
+	left: 6%;
+	width: 88%;
+
+}
+
+.receiveRedEnvelope .redCover .redCoverBG .redCoverText div,
+.receiveRedEnvelope .redCover .redCoverBGNO .redCoverText div {
+	color: #E8CFA1;
+	font-size: 35px;
+}
+
+.receiveRedEnvelope .redCover .redCoverBG .redCoverText div:nth-child(2),
+.receiveRedEnvelope .redCover .redCoverBGNO .redCoverText div:nth-child(2) {
+	color: #E8CFA1;
+	font-size: 35px;
+	margin-top: 80px;
+}
+
+.ListDetails {
+	position: absolute;
+	bottom: 100px;
+	color: #E8CFA1;
+	font-size: 28px;
+	width: 100%;
+	text-align: center;
+}
+
+
+.redList{
+	background: #fafafa;
+	height: 100vh;
+	    width: 100%;
+}
+.redList img {
+	width: 100%;
+	transform: scale(1.2);
+	z-index: 6;
+}
+
+.redList .redListText {
+	padding-top: 45px;
+	text-align: center;
+}
+
+.redList .redListText p {
+	font-size: 40px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	line-height: 80px;
+	color: #141426;
+}
+
+.redList .redListText p:nth-child(2) {
+	color: #141426;
+	opacity: 0.5;
+	font-size: 30px;
+}
+
+.redList .redListText p:nth-child(3) {
+	color: #C5A16B;
+	font-size: 70px;
+	margin-top: 60px;
+}
+
+.redList .redListText p:nth-child(3) span {
+	color: #C5A16B;
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.hx {
+	width: 100%;
+	height: 4px;
+	background: #F2F3F4;
+	border: 1px solid rgba(112, 112, 112, 0.15294117647058825);
+	margin-top: 30px;
+}
+ 
+	.redList .ALLlist{
+		width: 86%;
+		margin: 0 auto;
+		margin-top: 30px;
+		background: #fafafa;
+	}
+	.redList .quantity{
+		font-size: 20px;
+		color: #141426;
+	}
+	
+	.redList .flow{
+		margin-top:20px
+	}
+	
+	
+	/*红包列表*/
+	.redListAll {
+		border-bottom: 1px solid rgba(112, 112, 112, 0.15);
+		display: flex;
+		justify-content: space-between;
+		line-height: 100px;
+		
+	}
+	
+	.modular {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.redListAll div:last-child {
+		border-bottom: none;
+	}
+	
+	.redusername {
+		font-size: 30px;
+		color: rgba(20, 20, 38, 1);
+		font-weight: 600;
+		line-height: 50px;
+		margin: 10px;
+	}
+	
+	.reduseramount {
+		font-size: 25px;
+		color: rgba(20, 20, 38, 1);
+		font-weight: 500;
+	}
+	
+	.redListAll img {
+		width: 75px;
+		height: 75px;
+	}
