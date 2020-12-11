@@ -163,7 +163,7 @@
 			} else {
 				// console.log("无参数")
 			}
-			axios.get('http://api.oexchain.com/api/rpc/getlastversion').then(function(res) {
+			axios.get('https://api.oexchain.com/api/rpc/getlastversion').then(function(res) {
 				if (res.data.code == 200) {
 					console.log(res.data.data)
 					_this.edition = res.data.data
@@ -180,11 +180,11 @@
 			down11() {
 				var _this = this
 				if (_this.edition) {
-					window.open("https://www.oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
+					window.open("https://oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
 					var href = window.location.href
 					if (href.split("=")[1]) {
 						var geticodebyip = href.split("=")[1]
-						axios.get('http://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
+						axios.get('https://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
 						}).then(function(res) {
 						}).catch(function(error) {
 						});
@@ -198,7 +198,7 @@
 				var href = window.location.href
 				if (href.split("=")[1]) {
 					var geticodebyip = href.split("=")[1]
-					axios.get('http://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
+					axios.get('https://api.oexchain.com/api/bundipcode.oex?icode=' + geticodebyip, { 
 					}).then(function(res) {
 					}).catch(function(error) {
 					});
