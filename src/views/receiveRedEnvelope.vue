@@ -3,7 +3,7 @@
 		<!--顶部-->
 		<div class="receiveRedEnvelopetop" v-show="header">
 			<div class="redtitle">OEX钱包</div>
-			<a href="http://oexswap.com/index.html#/downapp" target="_blank" class="header-btn">下载APP</a>
+			<a href="http://app.oexswap.com/index.html#/downapp" target="_blank" class="header-btn">下载APP</a>
 		</div>
 		<!--登陆页面-->
 		<div class="landingPage" v-show="Page1==true">

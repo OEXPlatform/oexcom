@@ -1,5 +1,5 @@
 <template>
-	<div class="" style="font-family: PingFang SC;">
+	<div class="" style="font-family: PingFang SC;"  v-loading="loading">
 		<!--手机适配-->
 		<div class="sm">
 			<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
@@ -53,7 +53,8 @@
 				Language: "zh",
 				clientHeight: '',
 				geticodebyip: "",
-				edition: ""
+				edition: "",
+				loading: false
 			}
 		},
 		created() {
@@ -87,8 +88,10 @@
 		methods: {
 			down11() {
 				var _this = this
+				_this.loading=true
 				if (_this.edition) {
-					window.open("https://oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
+					_this.loading=false
+					window.open("https://app.oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
 					var href = window.location.href
 					if (href.split("=")[1]) {
 						var geticodebyip = href.split("=")[1]

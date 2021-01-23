@@ -78,7 +78,7 @@
 				<span>oexfund@gmail.com</span>
 			</div>
 		</div>
-		<div class="smhtml" v-else>
+		<div class="smhtml" v-else  v-loading="loading">
 			<div class="sm">
 				<img src="../assets/img/iphone1.png" class="iphone1" v-if="Language=='zh'">
 				<img src="../assets/img/iphone1en.png" class="iphone1" v-else>
@@ -136,7 +136,8 @@
 				sm: true,
 				mc: "",
 				geticodebyip: "",
-				edition: ""
+				edition: "",
+				loading: false
 			}
 		},
 		created() {
@@ -179,8 +180,10 @@
 		methods: {
 			down11() {
 				var _this = this
+				_this.loading=true
 				if (_this.edition) {
-					window.open("https://oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
+					_this.loading=false
+					window.open("https://app.oexswap.com/app-download/oexwallet" + _this.edition + ".apk");
 					var href = window.location.href
 					if (href.split("=")[1]) {
 						var geticodebyip = href.split("=")[1]
